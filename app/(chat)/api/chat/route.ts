@@ -156,3 +156,19 @@ export async function DELETE(request: Request) {
     });
   }
 }
+// ...
+
+execute: async ({ location }) => {
+  try {  // Add a try-catch block
+    // Validate location (e.g., using a regex or a list of valid locations)
+    if (!/^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/.test(location)) {
+      throw new Error("Invalid location format.");
+    }
+
+    // ... your weather fetching logic (the original code to get the weather)
+
+  } catch (err) { // Add the catch block
+    console.error("Error executing weather tool:", err);
+    return { error: err.message }; // Return an error object
+  }
+},
