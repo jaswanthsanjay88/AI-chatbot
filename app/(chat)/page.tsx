@@ -41,3 +41,18 @@ export default async function Page() {
     </>
   );
 }
+'use client';
+
+import { useChat } from '@ai-sdk/react';
+
+export default function Chat() {
+  const { messages, input, handleInputChange, handleSubmit, error } = useChat({
+    maxSteps: 5,
+  });
+
+  if (error) { // Add this error handling block
+    return <div>Error: {error.message}</div>;
+  }
+
+  // ... rest of your component code (rendering the chat messages, input, etc.)
+}
